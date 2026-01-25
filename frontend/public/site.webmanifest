@@ -1,0 +1,26 @@
+{
+  "name": "Phòng Khám Tâm Thần Kinh Bác Sĩ Lê Quang Vy",
+  "short_name": "TâmThần",
+  "description": "Bác sĩ tâm thần kinh chuyên khoa Lê Quang Vy - điều trị trầm cảm, lo âu, rối loạn giấc ngủ tại TP.HCM.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["medical", "health"]
+}
