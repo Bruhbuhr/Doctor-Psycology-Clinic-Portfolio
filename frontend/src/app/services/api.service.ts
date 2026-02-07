@@ -10,12 +10,14 @@ import {
   BookingResponse 
 } from '../models/types';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8000/api';
+  private baseUrl = environment.apiUrl;
 
   // Loading states
   isLoading = signal(false);
