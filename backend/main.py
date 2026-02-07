@@ -113,19 +113,18 @@ class BookingResponse(BaseModel):
 
 DB_DOCTOR = DoctorProfile(
     name="BS. Lê Quang Vy",
-    title="Tiến sĩ, Bác sĩ Chuyên khoa II",
+    title="Bác sĩ Chuyên khoa I",
     specialty="Tâm Thần Kinh",
     sub_specialty="Trị Liệu Tâm Lý & Rối Loạn Lo Âu",
-    bio="Bác sĩ Lê Quang Vy là chuyên gia tâm thần kinh hàng đầu với hơn 15 năm kinh nghiệm trong lĩnh vực chẩn đoán và điều trị các rối loạn tâm thần, lo âu, trầm cảm và các bệnh lý thần kinh. Nguyên Trưởng khoa Tâm Thần Bệnh viện Chợ Rẫy, bác sĩ kết hợp y học hiện đại với liệu pháp tâm lý chuyên sâu, luôn đặt sức khỏe tinh thần của bệnh nhân lên hàng đầu.",
-    years_experience=15,
-    patients_served=10000,
-    success_rate=96.5,
+    bio="Bác sĩ Lê Quang Vy là chuyên gia tâm thần kinh với hơn 25 năm kinh nghiệm. Nguyên là bác sĩ điều trị tại Bệnh viện Tâm thần TP.HCM (2000-2025), bác sĩ chuyên sâu về chẩn đoán và điều trị các rối loạn tâm thần, lo âu, trầm cảm, mất ngủ và các bệnh lý thần kinh khác. Với phương châm \"Lắng nghe để thấu hiểu\", bác sĩ cam kết mang lại giải pháp điều trị hiệu quả và nhân văn nhất cho người bệnh.",
+    years_experience=25,
+    patients_served=15000,
+    success_rate=98.5,
     image_url="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000",
     credentials=[
-        Credential(title="Tiến sĩ Y khoa - Chuyên ngành Tâm Thần", institution="Đại học Y Dược TP.HCM", year=2008),
-        Credential(title="Bác sĩ Nội trú - Tâm Thần Kinh", institution="Bệnh viện Chợ Rẫy", year=2011),
-        Credential(title="Chuyên khoa II - Tâm Thần", institution="Bệnh viện Tâm Thần TP.HCM", year=2014),
-        Credential(title="Chứng chỉ Tâm Lý Trị Liệu", institution="Hiệp hội Tâm Thần Hoa Kỳ (APA)", year=2015),
+        Credential(title="Bác sĩ Chuyên khoa I - Tâm Thần", institution="Đại học Y Dược TP.HCM", year=2000),
+        Credential(title="Chứng chỉ Hành nghề Khám chữa bệnh", institution="Sở Y tế TP.HCM", year=2013),
+        Credential(title="Bác sĩ Hạng III", institution="Bệnh viện Tâm thần TP.HCM", year=2020),
     ],
     languages=["Tiếng Việt", "Tiếng Anh"]
 )

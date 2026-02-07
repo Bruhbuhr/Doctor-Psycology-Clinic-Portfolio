@@ -92,21 +92,21 @@ export class ApiService {
 
   private getMockProfile(): DoctorProfile {
     return {
-      name: "Dr. Sarah Mitchell",
-      title: "MD, FACC, FAHA",
-      specialty: "Interventional Cardiology",
-      sub_specialty: "Preventive Heart Care",
-      bio: "Dr. Sarah Mitchell is a board-certified cardiologist with over 15 years of experience in interventional cardiology and preventive heart care. A former Chief Resident at Johns Hopkins Hospital, she combines cutting-edge medical expertise with a compassionate, patient-centered approach.",
-      years_experience: 15,
-      patients_served: 12000,
-      success_rate: 98.7,
-      image_url: "https://images.unsplash.com/photo-1559839734-2b71ea860485?auto=format&fit=crop&q=80&w=1000",
+      name: "BS. Lê Quang Vy",
+      title: "Bác sĩ Chuyên khoa I",
+      specialty: "Tâm Thần Kinh",
+      sub_specialty: "Trị Liệu Tâm Lý & Rối Loạn Lo Âu",
+      bio: "Bác sĩ Lê Quang Vy là chuyên gia tâm thần kinh với hơn 25 năm kinh nghiệm. Nguyên là bác sĩ điều trị tại Bệnh viện Tâm thần TP.HCM (2000-2025), bác sĩ chuyên sâu về chẩn đoán và điều trị các rối loạn tâm thần, lo âu, trầm cảm, mất ngủ và các bệnh lý thần kinh khác.",
+      years_experience: 25,
+      patients_served: 15000,
+      success_rate: 98.5,
+      image_url: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000",
       credentials: [
-        { title: "MD - Doctor of Medicine", institution: "Harvard Medical School", year: 2008 },
-        { title: "Fellowship - Cardiology", institution: "Cleveland Clinic", year: 2014 },
-        { title: "Board Certified", institution: "American Board of Internal Medicine", year: 2014 },
+        { title: "Bác sĩ Chuyên khoa I - Tâm Thần", institution: "Đại học Y Dược TP.HCM", year: 2000 },
+        { title: "Chứng chỉ Hành nghề Khám chữa bệnh", institution: "Sở Y tế TP.HCM", year: 2013 },
+        { title: "Bác sĩ Hạng III", institution: "Bệnh viện Tâm thần TP.HCM", year: 2020 },
       ],
-      languages: ["English", "Spanish", "French"]
+      languages: ["Tiếng Việt", "Tiếng Anh"]
     };
   }
 
@@ -132,23 +132,23 @@ export class ApiService {
 
   private getMockClinic(): ClinicInfo {
     return {
-      name: "EliteMed Heart & Vascular Center",
-      address: "1250 Medical Center Drive, Suite 400",
-      city: "Beverly Hills",
-      state: "California",
-      zip_code: "90210",
-      phone: "(310) 555-0199",
-      email: "appointments@elitemedclinic.com",
+      name: "Phòng Khám Tâm Thần Kinh Bác Sĩ Lê Quang Vy",
+      address: "145 Trần Quang Khải, Phường Tân Định",
+      city: "Quận 1",
+      state: "TP. Hồ Chí Minh",
+      zip_code: "700000",
+      phone: "(028) 3844 5678",
+      email: "lienhe@phongkhamtamthan.vn",
       hours: {
-        monday: "8:00 AM - 6:00 PM",
-        tuesday: "8:00 AM - 6:00 PM",
-        wednesday: "8:00 AM - 6:00 PM",
-        thursday: "8:00 AM - 6:00 PM",
-        friday: "8:00 AM - 5:00 PM",
-        saturday: "9:00 AM - 1:00 PM",
-        sunday: "Closed"
+        monday: "8:00 - 17:00",
+        tuesday: "8:00 - 17:00",
+        wednesday: "8:00 - 17:00",
+        thursday: "8:00 - 17:00",
+        friday: "8:00 - 17:00",
+        saturday: "8:00 - 12:00",
+        sunday: "Nghỉ"
       },
-      map_url: "https://maps.google.com/?q=Beverly+Hills+Medical+Center"
+      map_url: "https://maps.google.com/?q=145+Tran+Quang+Khai+District+1"
     };
   }
 }
