@@ -9,10 +9,42 @@ from pydantic import BaseModel, EmailStr, Field
 from typing import List, Optional
 from datetime import datetime
 import uvicorn
+from supabase import create_client, Client
+from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 # ============================================================================
-# 1. THIẾT LẬP ỨNG DỤNG
+# 1. THIẾT LẬP ỨNG DỤNG & DỊCH VỤ
 # ============================================================================
+
+# Supabase Setup
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+supabase: Client = None
+
+if SUPABASE_URL and SUPABASE_KEY:
+    try:
+        supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+        print("✅ Đã kết nối Supabase")
+    except Exception as e:
+        print(f"⚠️ Lỗi kết nối Supabase: {e}")
+
+# Email Setup
+conf = ConnectionConfig(
+    MAIL_USERNAME=os.getenv("MAIL_USERNAME", ""),
+    MAIL_PASSWORD=os.getenv("MAIL_PASSWORD", ""),
+    MAIL_FROM=os.getenv("MAIL_FROM", "noreply@phongkham.vn"),
+    MAIL_PORT=int(os.getenv("MAIL_PORT", 587)),
+    MAIL_SERVER=os.getenv("MAIL_SERVER", "smtp.gmail.com"),
+    MAIL_STARTTLS=True,
+    MAIL_SSL_TLS=False,
+    USE_CREDENTIALS=True,
+    VALIDATE_CERTS=True
+)
 
 app = FastAPI(
     title="Phòng Khám Tâm Thần Kinh API",
@@ -47,6 +79,7 @@ class Service(BaseModel):
     price_start: float
     duration_minutes: int
     icon: str
+    treatment_process: Optional[List[str]] = None
 
 class Credential(BaseModel):
     """Bằng cấp chuyên môn của bác sĩ"""
@@ -136,7 +169,14 @@ DB_SERVICES: List[Service] = [
         description="Đánh giá toàn diện sức khỏe tâm thần bao gồm tiền sử bệnh, khám lâm sàng và lập kế hoạch điều trị cá nhân hóa.",
         price_start=500000,
         duration_minutes=60,
-        icon="brain"
+        icon="brain",
+        treatment_process=[
+            "Đánh giá sơ bộ: Bác sĩ lắng nghe và ghi nhận các triệu chứng, tiền sử bệnh lý.",
+            "Khám lâm sàng: Kiểm tra các dấu hiệu thần kinh và trạng thái tâm thần hiện tại.",
+            "Chẩn đoán: Xác định vấn đề dựa trên tiêu chuẩn chẩn đoán quốc tế (ICD-10/DSM-5).",
+            "Tư vấn điều trị: Giải thích tình trạng bệnh và đề xuất phác đồ điều trị phù hợp (thuốc/tâm lý trị liệu).",
+            "Kê đơn (nếu cần): Hướng dẫn sử dụng thuốc an toàn và hiệu quả."
+        ]
     ),
     Service(
         id="srv_depression",
@@ -144,7 +184,14 @@ DB_SERVICES: List[Service] = [
         description="Chẩn đoán và điều trị các rối loạn trầm cảm bằng kết hợp thuốc và liệu pháp tâm lý theo tiêu chuẩn quốc tế.",
         price_start=600000,
         duration_minutes=45,
-        icon="heart"
+        icon="heart",
+        treatment_process=[
+            "Sàng lọc mức độ trầm cảm: Sử dụng các thang đo chuyên dụng (PHQ-9, BECK).",
+            "Thiết lập phác đồ: Kết hợp thuốc chống trầm cảm và liệu pháp nhận thức hành vi (CBT).",
+            "Theo dõi định kỳ: Đánh giá đáp ứng thuốc sau 2-4 tuần.",
+            "Hỗ trợ tâm lý: Giúp bệnh nhân thay đổi suy nghĩ tiêu cực và tìm lại động lực sống.",
+            "Dự phòng tái phát: Hướng dẫn kỹ năng kiểm soát cảm xúc lâu dài."
+        ]
     ),
     Service(
         id="srv_anxiety",
@@ -152,7 +199,14 @@ DB_SERVICES: List[Service] = [
         description="Điều trị các rối loạn lo âu, hoảng sợ, ám ảnh cưỡng chế (OCD) và rối loạn stress sau sang chấn (PTSD).",
         price_start=600000,
         duration_minutes=45,
-        icon="shield"
+        icon="shield",
+        treatment_process=[
+            "Xác định nguồn gốc lo âu: Phân tích các yếu tố gây căng thẳng (stressors).",
+            "Kiểm soát triệu chứng cấp: Sử dụng thuốc hoặc kỹ thuật thư giãn để giảm hoảng loạn ngay lập tức.",
+            "Liệu pháp phơi nhiễm: Giúp bệnh nhân đối mặt dần với nỗi sợ trong môi trường an toàn.",
+            "Điều chỉnh nhận thức: Thay đổi các suy nghĩ thảm họa hóa vấn đề.",
+            "Luyện tập thư giãn: Hướng dẫn thiền, hít thở sâu để duy trì sự bình tĩnh."
+        ]
     ),
     Service(
         id="srv_sleep",
@@ -160,7 +214,14 @@ DB_SERVICES: List[Service] = [
         description="Chẩn đoán và điều trị mất ngủ, ngủ không sâu giấc, ác mộng và các rối loạn giấc ngủ khác.",
         price_start=500000,
         duration_minutes=45,
-        icon="moon"
+        icon="moon",
+        treatment_process=[
+            "Nhật ký giấc ngủ: Phân tích thói quen ngủ trong 1-2 tuần.",
+            "Vệ sinh giấc ngủ: Hướng dẫn thay đổi môi trường và thói quen trước khi ngủ.",
+            "Điều trị nguyên nhân: Xử lý các vấn đề gây mất ngủ (lo âu, đau nhức, v.v.).",
+            "Sử dụng thuốc (ngắn hạn): Hỗ trợ giấc ngủ trong giai đoạn đầu điều trị.",
+            "Liệu pháp CBT-I: Phương pháp chuyên sâu trị liệu mất ngủ không dùng thuốc."
+        ]
     ),
     Service(
         id="srv_therapy",
@@ -168,7 +229,14 @@ DB_SERVICES: List[Service] = [
         description="Liệu pháp CBT, DBT và các phương pháp trị liệu tâm lý hiện đại giúp thay đổi suy nghĩ và hành vi tiêu cực.",
         price_start=700000,
         duration_minutes=60,
-        icon="message"
+        icon="message",
+        treatment_process=[
+            "Thiết lập mối quan hệ trị liệu: Xây dựng sự tin tưởng và an toàn.",
+            "Xác định mục tiêu: Thống nhất các vấn đề cần giải quyết (cảm xúc, hành vi, mối quan hệ).",
+            "Can thiệp chuyên sâu: Áp dụng kỹ thuật CBT, DBT hoặc trị liệu gia đình.",
+            "Bài tập về nhà: Thực hành các kỹ năng mới trong cuộc sống hàng ngày.",
+            "Tổng kết và duy trì: Đánh giá sự tiến bộ và lên kế hoạch tự chăm sóc sau trị liệu."
+        ]
     ),
     Service(
         id="srv_child",
@@ -176,7 +244,14 @@ DB_SERVICES: List[Service] = [
         description="Chẩn đoán và điều trị các rối loạn tâm thần ở trẻ em và thanh thiếu niên: ADHD, tự kỷ, rối loạn hành vi.",
         price_start=600000,
         duration_minutes=60,
-        icon="users"
+        icon="users",
+        treatment_process=[
+            "Quan sát lâm sàng: Đánh giá hành vi của trẻ qua trò chơi và giao tiếp.",
+            "Phỏng vấn phụ huynh: Thu thập thông tin từ gia đình và nhà trường.",
+            "Trắc nghiệm tâm lý: Sử dụng các công cụ đánh giá phát triển trí tuệ và cảm xúc.",
+            "Can thiệp đa mô thức: Kết hợp giáo dục, trị liệu hành vi và thuốc (nếu cần thiết).",
+            "Hướng dẫn phụ huynh: Trang bị kỹ năng nuôi dạy và hỗ trợ trẻ tại nhà."
+        ]
     ),
 ]
 
@@ -350,11 +425,13 @@ async def create_booking(booking: BookingRequest):
     
     # Tạo mã đặt lịch
     ref_prefix = booking.patient_name[:2].upper()
-    ref_number = len(bookings_db) + 1001
+    # Nếu có DB thì dùng DB đếm, tạm thời dùng len(bookings_db) hoặc random
+    import random
+    ref_number = random.randint(1000, 9999) 
     booking_ref = f"DL-{ref_prefix}-{ref_number}"
     
-    # Lưu thông tin đặt lịch
-    booking_record = {
+    # Chuẩn bị dữ liệu
+    booking_data = {
         "reference": booking_ref,
         "patient_name": booking.patient_name,
         "email": booking.email,
@@ -366,9 +443,42 @@ async def create_booking(booking: BookingRequest):
         "status": "chờ xác nhận",
         "created_at": datetime.now().isoformat()
     }
-    bookings_db.append(booking_record)
     
-    print(f"📅 Đặt lịch mới: {booking_ref} - {booking.patient_name} cho {service.title}")
+    # 1. Lưu vào Supabase (nếu có)
+    if supabase:
+        try:
+            supabase.table("bookings").insert(booking_data).execute()
+            print(f"✅ Đã lưu vào Supabase: {booking_ref}")
+        except Exception as e:
+            print(f"❌ Lỗi lưu Supabase: {e}")
+            # Vẫn tiếp tục để không block người dùng, có thể log lại
+    
+    # 2. Gửi Email (nếu cấu hình)
+    if conf.MAIL_USERNAME and conf.MAIL_PASSWORD:
+        try:
+            message = MessageSchema(
+                subject=f"📅 Đặt lịch mới: {booking.patient_name} - {service.title}",
+                recipients=[conf.MAIL_USERNAME],  # Gửi cho chính bác sĩ/admin
+                body=f"""
+                <h3>Thông tin đặt lịch mới</h3>
+                <p><strong>Mã:</strong> {booking_ref}</p>
+                <p><strong>Bệnh nhân:</strong> {booking.patient_name}</p>
+                <p><strong>SĐT:</strong> {booking.phone}</p>
+                <p><strong>Email:</strong> {booking.email}</p>
+                <p><strong>Dịch vụ:</strong> {service.title}</p>
+                <p><strong>Ngày hẹn:</strong> {booking.preferred_date}</p>
+                <p><strong>Ghi chú:</strong> {booking.notes}</p>
+                """,
+                subtype=MessageType.html
+            )
+            fm = FastMail(conf)
+            await fm.send_message(message)
+            print(f"📧 Đã gửi email thông báo cho {booking_ref}")
+        except Exception as e:
+            print(f"❌ Lỗi gửi email: {e}")
+
+    # 3. Lưu tạm vào Ram (Fallback)
+    bookings_db.append(booking_data)
     
     return BookingResponse(
         status="thành công",
@@ -376,6 +486,8 @@ async def create_booking(booking: BookingRequest):
         booking_reference=booking_ref,
         estimated_callback="Trong vòng 2 giờ làm việc"
     )
+
+
 
 @app.get("/api/bookings", tags=["Quản trị"])
 async def get_all_bookings():

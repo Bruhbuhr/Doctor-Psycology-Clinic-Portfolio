@@ -10,6 +10,7 @@ export interface Service {
   price_start: number;
   duration_minutes: number;
   icon: string;
+  treatment_process?: string[];
 }
 
 export interface Credential {
