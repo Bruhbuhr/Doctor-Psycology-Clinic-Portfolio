@@ -44,10 +44,13 @@ import { Service } from '../../models/types';
             </div>
 
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="space-y-2">
-                <label class="label-text">Địa Chỉ Email *</label>
-                <input formControlName="email" type="email" class="input-field" placeholder="email@example.com"/>
-              </div>
+            <div class="space-y-2">
+              <label class="label-text">Địa Chỉ Email *</label>
+              <input formControlName="email" type="email" class="input-field" placeholder="email@example.com"/>
+              @if (formGroup().get('email')?.touched && formGroup().get('email')?.invalid) {
+                <p class="error-text">Vui lòng nhập email hợp lệ</p>
+              }
+            </div>
 
               <div class="space-y-2">
                 <label class="label-text">Dịch Vụ Quan Tâm *</label>
@@ -62,6 +65,9 @@ import { Service } from '../../models/types';
             <div class="space-y-2">
               <label class="label-text">Ngày Muốn Khám *</label>
               <input formControlName="preferred_date" type="date" class="input-field [color-scheme:dark]"/>
+              @if (formGroup().get('preferred_date')?.touched && formGroup().get('preferred_date')?.invalid) {
+                <p class="error-text">Vui lòng chọn ngày muốn khám</p>
+              }
             </div>
 
             <div class="space-y-2">
@@ -69,7 +75,7 @@ import { Service } from '../../models/types';
               <textarea formControlName="notes" class="input-field min-h-[80px]" placeholder="Mô tả ngắn về tình trạng của bạn..."></textarea>
             </div>
 
-            <button type="submit" [disabled]="formGroup().invalid || isSubmitting()" class="submit-btn" [class.opacity-50]="formGroup().invalid || isSubmitting()">
+             <button type="submit" class="submit-btn" [disabled]="isSubmitting()">
               @if (isSubmitting()) {
                 <span class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
                 Đang xử lý...
@@ -85,6 +91,21 @@ import { Service } from '../../models/types';
               </div>
             }
           </form>
+
+          @if (status() && status()?.includes('✅')) {
+            <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+              <div class="bg-white text-slate-900 rounded-2xl p-8 max-w-sm w-[90%] text-center shadow-2xl">
+                <h3 class="text-xl font-bold mb-2">Đặt lịch thành công!</h3>
+                <p class="text-slate-600 text-sm mb-6">
+                  Chúng tôi đã nhận được thông tin của bạn. Nhân viên sẽ liên hệ trong vòng 2 giờ để xác nhận lịch hẹn.
+                </p>
+                <button type="button" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-xl"
+                        (click)="onDismissStatus()">
+                  Đóng
+                </button>
+              </div>
+            </div>
+          }
         </div>
       </div>
     </section>
@@ -103,8 +124,13 @@ export class BookingComponent {
   status = input<string | null>(null);
   
   submitForm = output<void>();
+  dismissStatus = output<void>();
 
   onSubmit() {
     this.submitForm.emit();
+  }
+
+  onDismissStatus() {
+    this.dismissStatus.emit();
   }
 }

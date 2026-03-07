@@ -67,7 +67,7 @@ import { DoctorProfile } from '../../models/types';
         <!-- Right - Doctor Image -->
         <div class="relative lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/10 group">
           <img 
-            [src]="profile()?.image_url || 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000'" 
+            src="assets/images/hero-doctor-main.png"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             alt="Ảnh Bác Sĩ"
           />

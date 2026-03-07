@@ -59,7 +59,8 @@ import { FooterComponent } from './components/footer/footer.component';
             [formGroup]="bookingForm"
             [isSubmitting]="isSubmitting()"
             [status]="submitStatus()"
-            (submitForm)="onSubmit()">
+            (submitForm)="onSubmit()"
+            (dismissStatus)="submitStatus.set(null)">
           </app-booking>
         </article>
       </main>
@@ -119,8 +120,10 @@ export class App implements OnInit {
   }
 
   onSubmit(): void {
+    // Frontend validation first so we don't send invalid data (which causes 422 from backend)
     if (this.bookingForm.invalid) {
       this.bookingForm.markAllAsTouched();
+      this.submitStatus.set('❌ Vui lòng kiểm tra và điền đầy đủ thông tin hợp lệ (họ tên, email, số điện thoại, dịch vụ, ngày khám).');
       return;
     }
 

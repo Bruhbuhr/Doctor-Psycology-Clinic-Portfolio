@@ -35,20 +35,13 @@ import { Testimonial } from '../../models/types';
                       }
                     </div>
 
-                    <blockquote class="text-xl lg:text-2xl font-medium leading-relaxed mb-8">
+                    <blockquote class="text-xl lg:text-2xl font-medium leading-relaxed mb-6">
                       "{{ t.comment }}"
                     </blockquote>
 
-                    <div class="flex items-center gap-4">
-                      <img 
-                        [src]="t.patient_image || 'https://via.placeholder.com/60'"
-                        [alt]="t.patient_name"
-                        class="w-14 h-14 rounded-full object-cover border-2 border-indigo-400"
-                      />
-                      <div>
-                        <div class="font-bold text-lg">{{ t.patient_name }}</div>
-                        <div class="text-indigo-300 text-sm">{{ t.treatment }}</div>
-                      </div>
+                    <div>
+                      <div class="font-bold text-lg">{{ t.patient_name }}</div>
+                      <div class="text-indigo-300 text-sm">{{ t.treatment }}</div>
                     </div>
                   </div>
                 }

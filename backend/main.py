@@ -458,7 +458,7 @@ async def create_booking(booking: BookingRequest):
         try:
             message = MessageSchema(
                 subject=f"📅 Đặt lịch mới: {booking.patient_name} - {service.title}",
-                recipients=[conf.MAIL_USERNAME],  # Gửi cho chính bác sĩ/admin
+                recipients=["bsvy66@gmail.com"],
                 body=f"""
                 <h3>Thông tin đặt lịch mới</h3>
                 <p><strong>Mã:</strong> {booking_ref}</p>
