@@ -354,8 +354,8 @@ DB_CLINIC = ClinicInfo(
     city="Quận 1",
     state="TP. Hồ Chí Minh",
     zip_code="700000",
-    phone="(028) 3844 5678",
-    email="lienhe@phongkhamtamthan.vn",
+    phone="0918678678",
+    email="bsvy66@gmail.com",
     hours={
         "monday": "8:00 - 17:00",
         "tuesday": "8:00 - 17:00",
