@@ -19,7 +19,13 @@ import { ClinicInfo } from '../../models/types';
               <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
                 {{ clinic()?.name || 'Phòng Khám Tâm Thần Kinh' }}
               </h2>
-              <p class="text-slate-600">Không gian riêng tư, thoải mái và bảo mật tuyệt đối.</p>
+              <p class="text-slate-600">Không gian thăm khám riêng tư, kín đáo và bảo mật tuyệt đối theo chuẩn đạo đức nghề y.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div class="trust-item">Khám 1:1</div>
+              <div class="trust-item">Bảo mật hồ sơ</div>
+              <div class="trust-item">Hỗ trợ sau khám</div>
             </div>
 
             <div class="grid gap-4">
@@ -47,7 +53,7 @@ import { ClinicInfo } from '../../models/types';
                 </div>
                 <div>
                   <div class="font-semibold text-slate-900">Điện Thoại</div>
-                  <div class="text-indigo-600 font-medium">{{ clinic()?.phone }}</div>
+                  <a class="text-indigo-600 font-medium hover:underline" [href]="'tel:' + clinic()?.phone">{{ clinic()?.phone }}</a>
                 </div>
               </div>
 
@@ -60,7 +66,7 @@ import { ClinicInfo } from '../../models/types';
                 </div>
                 <div>
                   <div class="font-semibold text-slate-900">Email</div>
-                  <div class="text-indigo-600">{{ clinic()?.email }}</div>
+                  <a class="text-indigo-600 hover:underline" [href]="'mailto:' + clinic()?.email">{{ clinic()?.email }}</a>
                 </div>
               </div>
             </div>
@@ -97,6 +103,9 @@ import { ClinicInfo } from '../../models/types';
     }
     .icon-box {
       @apply w-12 h-12 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 shrink-0;
+    }
+    .trust-item {
+      @apply text-center text-sm font-medium bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-700;
     }
   `]
 })

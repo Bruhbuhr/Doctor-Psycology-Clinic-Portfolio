@@ -133,13 +133,13 @@ export class App implements OnInit {
     this.apiService.submitBooking(this.bookingForm.value).subscribe({
       next: (response) => {
         this.isSubmitting.set(false);
-        this.submitStatus.set(`✅ ${response.message} Reference: ${response.booking_reference}`);
+        this.submitStatus.set(`✅ ${response.message} Mã đặt lịch: ${response.booking_reference}`);
         this.bookingForm.reset();
         setTimeout(() => this.submitStatus.set(null), 8000);
       },
       error: () => {
         this.isSubmitting.set(false);
-        this.submitStatus.set('❌ Something went wrong. Please try again.');
+        this.submitStatus.set('❌ Hệ thống đang bận. Vui lòng thử lại sau hoặc gọi hotline để được hỗ trợ nhanh.');
       }
     });
   }

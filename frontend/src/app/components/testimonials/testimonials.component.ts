@@ -11,13 +11,13 @@ import { Testimonial } from '../../models/types';
       <div class="max-w-7xl mx-auto px-4">
         <div class="text-center max-w-2xl mx-auto mb-16">
           <div class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4">
-            Đánh Giá Của Bệnh Nhân
+            Phản Hồi Bệnh Nhân
           </div>
           <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Hành Trình Phục Hồi Của Họ
+            Bệnh Nhân Nói Gì Về BS. Lê Quang Vy
           </h2>
           <p class="text-slate-600 text-lg">
-            Những câu chuyện thực từ những bệnh nhân đã tin tưởng giao phó sức khỏe tinh thần cho chúng tôi.
+            Những phản hồi thực tế từ người bệnh đã thăm khám và điều trị cùng BS. Lê Quang Vy.
           </p>
         </div>
 

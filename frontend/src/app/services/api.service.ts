@@ -80,9 +80,9 @@ export class ApiService {
         console.warn('Backend unavailable, simulating booking', err);
         return of({
           status: 'success',
-          message: 'Demo mode: Your request has been received!',
+          message: 'Hệ thống demo: Chúng tôi đã nhận được yêu cầu của bạn.',
           booking_reference: `BK-DEMO-${Date.now().toString().slice(-4)}`,
-          estimated_callback: 'Within 2 hours during business hours'
+          estimated_callback: 'Trong vòng 2 giờ trong giờ làm việc'
         });
       })
     );
@@ -114,21 +114,93 @@ export class ApiService {
 
   private getMockServices(): Service[] {
     return [
-      { id: "srv_consult", title: "Cardiac Consultation", description: "Comprehensive heart health assessment including medical history review, physical examination, and personalized treatment planning.", price_start: 150, duration_minutes: 45, icon: "heart-pulse" },
-      { id: "srv_echo", title: "Echocardiogram", description: "Non-invasive ultrasound imaging to visualize heart structure, valves, and blood flow in real-time.", price_start: 300, duration_minutes: 60, icon: "activity" },
-      { id: "srv_stress", title: "Stress Testing", description: "Evaluate heart function under controlled physical stress to detect coronary artery disease.", price_start: 250, duration_minutes: 90, icon: "trending-up" },
-      { id: "srv_holter", title: "Holter Monitoring", description: "24-72 hour continuous heart rhythm recording to detect arrhythmias.", price_start: 200, duration_minutes: 30, icon: "monitor" },
-      { id: "srv_ekg", title: "EKG / ECG", description: "Quick, painless electrical recording of heart activity to screen for heart conditions.", price_start: 75, duration_minutes: 15, icon: "zap" },
-      { id: "srv_prevention", title: "Preventive Cardiology", description: "Personalized risk assessment and lifestyle modification program for heart disease prevention.", price_start: 200, duration_minutes: 60, icon: "shield" },
+      {
+        id: "srv_consult_psy",
+        title: "Khám Tâm Thần Chuyên Khoa",
+        description: "Đánh giá toàn diện triệu chứng tâm thần, tiền sử cá nhân và gia đình để xây dựng hướng điều trị phù hợp.",
+        price_start: 500000,
+        duration_minutes: 45,
+        icon: "brain",
+        treatment_process: [
+          "Khai thác triệu chứng và tiền sử bệnh lý",
+          "Đánh giá mức độ ảnh hưởng đến giấc ngủ, công việc, quan hệ",
+          "Tư vấn chẩn đoán và lập kế hoạch điều trị cá nhân"
+        ]
+      },
+      {
+        id: "srv_anxiety",
+        title: "Điều Trị Rối Loạn Lo Âu",
+        description: "Phối hợp thuốc (nếu cần) và liệu pháp tâm lý nhằm giảm lo âu kéo dài, hoảng sợ và ám ảnh.",
+        price_start: 600000,
+        duration_minutes: 50,
+        icon: "heart",
+        treatment_process: [
+          "Đo mức độ lo âu bằng thang đo lâm sàng",
+          "Xây dựng phác đồ kiểm soát cơn lo âu",
+          "Theo dõi định kỳ và điều chỉnh điều trị"
+        ]
+      },
+      {
+        id: "srv_depression",
+        title: "Điều Trị Trầm Cảm",
+        description: "Can thiệp sớm cho trầm cảm nhẹ đến nặng, tập trung cải thiện cảm xúc, năng lượng và chức năng sống.",
+        price_start: 650000,
+        duration_minutes: 50,
+        icon: "shield",
+        treatment_process: [
+          "Sàng lọc và phân tầng mức độ trầm cảm",
+          "Lựa chọn phương pháp điều trị phù hợp",
+          "Theo dõi đáp ứng và phòng ngừa tái phát"
+        ]
+      },
+      {
+        id: "srv_sleep",
+        title: "Điều Trị Mất Ngủ & Rối Loạn Giấc Ngủ",
+        description: "Đánh giá nguyên nhân mất ngủ do stress, lo âu hoặc rối loạn tâm thần; cải thiện chất lượng giấc ngủ bền vững.",
+        price_start: 550000,
+        duration_minutes: 40,
+        icon: "moon",
+        treatment_process: [
+          "Phân tích thói quen ngủ và yếu tố tâm lý liên quan",
+          "Hướng dẫn vệ sinh giấc ngủ và kỹ thuật thư giãn",
+          "Theo dõi tiến triển theo tuần"
+        ]
+      },
+      {
+        id: "srv_psychotherapy",
+        title: "Tâm Lý Trị Liệu (CBT/ACT)",
+        description: "Liệu pháp tâm lý có cấu trúc giúp thay đổi suy nghĩ tiêu cực, cải thiện hành vi và kỹ năng ứng phó.",
+        price_start: 700000,
+        duration_minutes: 60,
+        icon: "message",
+        treatment_process: [
+          "Xác định vấn đề mục tiêu trong trị liệu",
+          "Thực hành kỹ thuật trị liệu theo từng buổi",
+          "Đánh giá hiệu quả và củng cố kỹ năng tự hỗ trợ"
+        ]
+      },
+      {
+        id: "srv_family",
+        title: "Tư Vấn Gia Đình & Người Chăm Sóc",
+        description: "Hỗ trợ gia đình hiểu đúng về bệnh, nâng cao kỹ năng đồng hành và giảm xung đột trong quá trình điều trị.",
+        price_start: 500000,
+        duration_minutes: 45,
+        icon: "users",
+        treatment_process: [
+          "Đánh giá bối cảnh gia đình và vai trò chăm sóc",
+          "Hướng dẫn giao tiếp hỗ trợ người bệnh",
+          "Lập kế hoạch phối hợp giữa gia đình và bác sĩ"
+        ]
+      },
     ];
   }
 
   private getMockTestimonials(): Testimonial[] {
     return [
-      { id: "test_1", patient_name: "Michael R.", patient_image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "Dr. Mitchell saved my life. After years of ignoring warning signs, she caught a serious blockage during a routine checkup. Her thorough approach and genuine care made all the difference.", date: "2025-12-15", treatment: "Cardiac Consultation" },
-      { id: "test_2", patient_name: "Jennifer K.", patient_image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "The most professional and caring medical experience I've ever had. Dr. Mitchell took the time to explain everything and answer all my questions. Highly recommend!", date: "2025-11-28", treatment: "Echocardiogram" },
-      { id: "test_3", patient_name: "Robert T.", patient_image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "After my heart attack, Dr. Mitchell created a comprehensive recovery plan. One year later, I'm healthier than I've been in decades. Forever grateful.", date: "2025-10-10", treatment: "Preventive Cardiology" },
-      { id: "test_4", patient_name: "Patricia M.", patient_image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "The stress test was quick and painless. The staff was incredibly supportive, and Dr. Mitchell personally reviewed my results the same day.", date: "2025-09-22", treatment: "Stress Testing" },
+      { id: "test_1", patient_name: "Chị M. (32 tuổi)", patient_image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "Tôi bị mất ngủ và lo âu kéo dài hơn 1 năm. Sau 6 tuần điều trị và trị liệu, giấc ngủ ổn định hơn, tinh thần nhẹ nhõm, đi làm lại bình thường.", date: "2025-12-15", treatment: "Điều Trị Rối Loạn Lo Âu" },
+      { id: "test_2", patient_name: "Anh K. (41 tuổi)", patient_image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "Bác sĩ giải thích rất rõ ràng, không phán xét và luôn tôn trọng quyền riêng tư. Tôi thấy an tâm khi chia sẻ vấn đề cá nhân.", date: "2025-11-28", treatment: "Khám Tâm Thần Chuyên Khoa" },
+      { id: "test_3", patient_name: "Cô H. (56 tuổi)", patient_image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "Con trai tôi trầm cảm kéo dài, gia đình rất hoang mang. Sau khi được bác sĩ tư vấn kỹ và theo dõi đều, cháu cải thiện rõ rệt.", date: "2025-10-10", treatment: "Điều Trị Trầm Cảm" },
+      { id: "test_4", patient_name: "Bạn N. (27 tuổi)", patient_image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200", rating: 5, comment: "Liệu pháp CBT giúp tôi kiểm soát suy nghĩ tiêu cực và giảm cơn hoảng sợ. Mỗi buổi đều có mục tiêu rõ ràng, dễ áp dụng.", date: "2025-09-22", treatment: "Tâm Lý Trị Liệu (CBT/ACT)" },
     ];
   }
 

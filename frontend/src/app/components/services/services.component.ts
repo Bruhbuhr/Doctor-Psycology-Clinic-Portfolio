@@ -12,13 +12,13 @@ import { Service } from '../../models/types';
         <!-- Section Header -->
         <div class="text-center max-w-2xl mx-auto mb-16">
           <div class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4">
-            Dịch Vụ Của Chúng Tôi
+            Chuyên Khoa Tâm Thần
           </div>
           <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Chăm Sóc Sức Khỏe Tinh Thần Toàn Diện
+            Dịch Vụ Chẩn Đoán & Điều Trị Chuyên Sâu
           </h2>
           <p class="text-slate-600 text-lg">
-            Dịch vụ chẩn đoán và điều trị tâm thần kinh chuyên sâu, kết hợp y học hiện đại với liệu pháp tâm lý theo tiêu chuẩn quốc tế.
+            Kế hoạch điều trị cá nhân hóa cho trầm cảm, lo âu, mất ngủ, stress kéo dài và các rối loạn tâm thần thường gặp.
           </p>
         </div>
 
@@ -60,7 +60,7 @@ import { Service } from '../../models/types';
 
       <!-- Modal Popup -->
       @if (selectedService()) {
-        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label="Chi tiết dịch vụ">
           <!-- Backdrop -->
           <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" 
                (click)="closeModal()"></div>

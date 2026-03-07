@@ -21,8 +21,14 @@ import { DoctorProfile } from '../../models/types';
                 <span class="text-indigo-600">Thấu Hiểu & Đồng Cảm</span>
               </h2>
               <p class="text-slate-600 text-lg leading-relaxed">
-                Với bằng cấp từ các cơ sở y khoa hàng đầu và cam kết cập nhật những tiến bộ mới nhất trong lĩnh vực tâm thần học, bác sĩ luôn đặt sức khỏe tinh thần của bệnh nhân lên hàng đầu.
+                Bác sĩ có nhiều năm kinh nghiệm tại bệnh viện chuyên khoa tâm thần, luôn kết hợp đánh giá lâm sàng kỹ lưỡng với liệu pháp phù hợp từng người bệnh.
               </p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div class="trust-chip">Khám riêng tư</div>
+              <div class="trust-chip">Phác đồ cá nhân hóa</div>
+              <div class="trust-chip">Theo dõi sát sau khám</div>
             </div>
 
             <!-- Credentials List -->
@@ -98,6 +104,7 @@ import { DoctorProfile } from '../../models/types';
     .badge-item { @apply text-center; }
     .badge-icon { @apply w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-2xl mb-2; }
     .badge-label { @apply text-xs text-slate-500 font-medium; }
+    .trust-chip { @apply text-center text-sm font-medium bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-700; }
   `]
 })
 export class AboutComponent {
