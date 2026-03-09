@@ -74,7 +74,7 @@ import { DoctorProfile } from '../../models/types';
           <img 
             src="assets/images/hero-doctor-main.png"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            alt="Ảnh Bác Sĩ"
+            alt="BS. Lê Quang Vy - Bác sĩ chuyên khoa Tâm Thần Kinh tại TP.HCM, khám và điều trị trầm cảm, lo âu, mất ngủ"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
           

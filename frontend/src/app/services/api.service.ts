@@ -118,7 +118,7 @@ export class ApiService {
         id: "srv_consult_psy",
         title: "Khám Tâm Thần Chuyên Khoa",
         description: "Đánh giá toàn diện triệu chứng tâm thần, tiền sử cá nhân và gia đình để xây dựng hướng điều trị phù hợp.",
-        price_start: 500000,
+        price_start: 200000,
         duration_minutes: 45,
         icon: "brain",
         treatment_process: [
@@ -131,7 +131,7 @@ export class ApiService {
         id: "srv_anxiety",
         title: "Điều Trị Rối Loạn Lo Âu",
         description: "Phối hợp thuốc (nếu cần) và liệu pháp tâm lý nhằm giảm lo âu kéo dài, hoảng sợ và ám ảnh.",
-        price_start: 600000,
+        price_start: 200000,
         duration_minutes: 50,
         icon: "heart",
         treatment_process: [
@@ -144,7 +144,7 @@ export class ApiService {
         id: "srv_depression",
         title: "Điều Trị Trầm Cảm",
         description: "Can thiệp sớm cho trầm cảm nhẹ đến nặng, tập trung cải thiện cảm xúc, năng lượng và chức năng sống.",
-        price_start: 650000,
+        price_start: 200000,
         duration_minutes: 50,
         icon: "shield",
         treatment_process: [
@@ -157,7 +157,7 @@ export class ApiService {
         id: "srv_sleep",
         title: "Điều Trị Mất Ngủ & Rối Loạn Giấc Ngủ",
         description: "Đánh giá nguyên nhân mất ngủ do stress, lo âu hoặc rối loạn tâm thần; cải thiện chất lượng giấc ngủ bền vững.",
-        price_start: 550000,
+        price_start: 200000,
         duration_minutes: 40,
         icon: "moon",
         treatment_process: [
@@ -170,7 +170,7 @@ export class ApiService {
         id: "srv_psychotherapy",
         title: "Tâm Lý Trị Liệu (CBT/ACT)",
         description: "Liệu pháp tâm lý có cấu trúc giúp thay đổi suy nghĩ tiêu cực, cải thiện hành vi và kỹ năng ứng phó.",
-        price_start: 700000,
+        price_start: 200000,
         duration_minutes: 60,
         icon: "message",
         treatment_process: [
@@ -183,7 +183,7 @@ export class ApiService {
         id: "srv_family",
         title: "Tư Vấn Gia Đình & Người Chăm Sóc",
         description: "Hỗ trợ gia đình hiểu đúng về bệnh, nâng cao kỹ năng đồng hành và giảm xung đột trong quá trình điều trị.",
-        price_start: 500000,
+        price_start: 200000,
         duration_minutes: 45,
         icon: "users",
         treatment_process: [

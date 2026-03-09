@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Service } from '../../models/types';
 
@@ -114,7 +114,7 @@ import { Service } from '../../models/types';
                 <span class="text-xl font-bold text-indigo-600">{{ selectedService()!.price_start | number }}đ</span>
               </div>
               <button class="px-6 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20"
-                      (click)="closeModal()"> <!-- Could link to booking later -->
+                      (click)="onBookNow()">
                 Đặt lịch ngay
               </button>
             </div>
@@ -127,6 +127,7 @@ import { Service } from '../../models/types';
 export class ServicesComponent {
   services = input.required<Service[]>();
   selectedService = signal<Service | null>(null);
+  bookNow = output<string>();
 
   getIcon(iconKey: string): string {
     const icons: Record<string, string> = {
@@ -148,5 +149,13 @@ export class ServicesComponent {
   closeModal() {
     this.selectedService.set(null);
     document.body.style.overflow = ''; // Restore scrolling
+  }
+
+  onBookNow() {
+    const service = this.selectedService();
+    if (service) {
+      this.bookNow.emit(service.id);
+    }
+    this.closeModal();
   }
 }

@@ -5,55 +5,49 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
-  <!-- Homepage -->
   <url>
-    <loc>https://elitemedclinic.com/</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://lequangvy.netlify.app/</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://elitemedclinic.com/assets/og-image.jpg</image:loc>
-      <image:title>Dr. Sarah Mitchell - Board Certified Cardiologist</image:title>
-      <image:caption>EliteMed Heart and Vascular Center in Beverly Hills</image:caption>
+      <image:loc>https://lequangvy.netlify.app/assets/images/hero-doctor-main.png</image:loc>
+      <image:title>BS. Lê Quang Vy - Bác sĩ chuyên khoa Tâm Thần Kinh TP.HCM</image:title>
+      <image:caption>Phòng Khám Tâm Thần Kinh Bác Sĩ Lê Quang Vy - Khám và điều trị trầm cảm, lo âu, mất ngủ tại TP.HCM</image:caption>
     </image:image>
   </url>
   
-  <!-- Services Section -->
   <url>
-    <loc>https://elitemedclinic.com/#services</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://lequangvy.netlify.app/#services</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- About Section -->
   <url>
-    <loc>https://elitemedclinic.com/#about</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://lequangvy.netlify.app/#about</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Testimonials Section -->
   <url>
-    <loc>https://elitemedclinic.com/#testimonials</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://lequangvy.netlify.app/#testimonials</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
-  <!-- Contact Section -->
   <url>
-    <loc>https://elitemedclinic.com/#contact</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://lequangvy.netlify.app/#contact</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
-  <!-- Booking Section -->
   <url>
-    <loc>https://elitemedclinic.com/#booking</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://lequangvy.netlify.app/#booking</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>

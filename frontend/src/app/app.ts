@@ -46,7 +46,10 @@ import { FooterComponent } from './components/footer/footer.component';
             (servicesClick)="scrollToSection('services')">
           </app-hero>
 
-          <app-services [services]="services()"></app-services>
+          <app-services 
+            [services]="services()"
+            (bookNow)="onServiceBookNow($event)">
+          </app-services>
 
           <app-about [profile]="profile()"></app-about>
 
@@ -142,5 +145,11 @@ export class App implements OnInit {
         this.submitStatus.set('❌ Hệ thống đang bận. Vui lòng thử lại sau hoặc gọi hotline để được hỗ trợ nhanh.');
       }
     });
+  }
+
+  onServiceBookNow(serviceId: string): void {
+    // Pre-select the service in booking form and scroll to booking section
+    this.bookingForm.patchValue({ service_id: serviceId });
+    this.scrollToSection('booking');
   }
 }

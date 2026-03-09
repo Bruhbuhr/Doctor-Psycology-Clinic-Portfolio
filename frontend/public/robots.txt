@@ -1,29 +1,27 @@
-# Robots.txt for EliteMed Clinic
-# https://elitemedclinic.com/robots.txt
+# Robots.txt - BS. Lê Quang Vy | Phòng Khám Tâm Thần Kinh
+# https://lequangvy.netlify.app/robots.txt
 
-# Allow all search engines
 User-agent: *
 Allow: /
 
-# Disallow admin/API paths
+# Disallow API paths (frontend has none, but future-proof)
 Disallow: /api/
-Disallow: /admin/
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
+# Sitemap - CRITICAL for Google indexing
+Sitemap: https://lequangvy.netlify.app/sitemap.xml
 
-# Sitemap location
-Sitemap: https://elitemedclinic.com/sitemap.xml
-
-# Google-specific
+# Google
 User-agent: Googlebot
 Allow: /
 
-# Bing-specific
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
 User-agent: Bingbot
 Allow: /
 
-# Allow social media crawlers for rich previews
+# Social crawlers for rich previews
 User-agent: facebookexternalhit
 Allow: /
 
